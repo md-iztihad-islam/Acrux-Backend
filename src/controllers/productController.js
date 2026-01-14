@@ -66,6 +66,11 @@ export const updateProductController = async (req, res) => {
     try {
         const productId = req.params.productid;
         const updatedData = req.body;
+        const image = req.file ? req.file.location : null;
+
+        if(image){
+            updatedData.image = image;
+        }
 
         console.log("Product ID to update: ", productId);
         console.log("Updated data received in controller: ", updatedData);
